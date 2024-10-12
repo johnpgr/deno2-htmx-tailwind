@@ -1,4 +1,3 @@
-import { escape } from "@std/html";
 import { Layout } from "../components/layout.tsx";
 import { STATUS_CODE, STATUS_TEXT } from "@std/http/status";
 import { HTMLResponse, PartialHTMLResponse } from "../utils/http.ts";
@@ -34,8 +33,9 @@ export class ViewsHandler {
         const url = new URL(req.url);
         const name = url.searchParams.get("name");
 
+        //{name} is automatically escaped
         return new PartialHTMLResponse(
-            <p>Hello, {name ? escape(name) : "unknown"}</p>,
+            <p>Hello, {name ?? "unknown"}</p>,
         );
     }
 
