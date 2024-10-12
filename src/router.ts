@@ -1,5 +1,5 @@
 import type { Handler, Route } from "@std/http";
-import { HTTP_METHOD } from "./utils.ts";
+import { METHOD } from "@std/http/unstable-method"
 
 export class Router {
     routes: Route[] = [];
@@ -8,7 +8,7 @@ export class Router {
         this.routes.push({
             handler,
             pattern: new URLPattern({ pathname: path }),
-            method: HTTP_METHOD.GET,
+            method: METHOD.Get,
         });
         return this;
     }
@@ -17,7 +17,7 @@ export class Router {
         this.routes.push({
             handler,
             pattern: new URLPattern({ pathname: path }),
-            method: HTTP_METHOD.DELETE,
+            method: METHOD.Delete,
         });
         return this;
     }
@@ -26,7 +26,7 @@ export class Router {
         this.routes.push({
             handler,
             pattern: new URLPattern({ pathname: path }),
-            method: HTTP_METHOD.POST,
+            method: METHOD.Post,
         });
         return this;
     }
@@ -35,7 +35,7 @@ export class Router {
         this.routes.push({
             handler,
             pattern: new URLPattern({ pathname: path }),
-            method: HTTP_METHOD.PUT,
+            method: METHOD.Put,
         });
         return this;
     }
@@ -44,16 +44,7 @@ export class Router {
         this.routes.push({
             handler,
             pattern: new URLPattern({ pathname: path }),
-            method: HTTP_METHOD.PATCH,
-        });
-        return this;
-    }
-
-    all(path: string, handler: Handler): this {
-        this.routes.push({
-            handler,
-            pattern: new URLPattern({ pathname: path }),
-            method: Object.values(HTTP_METHOD),
+            method: METHOD.Patch,
         });
         return this;
     }
@@ -62,34 +53,16 @@ export class Router {
         this.routes.push({
             handler,
             pattern: new URLPattern({ pathname: path }),
-            method: HTTP_METHOD.OPTIONS,
+            method: METHOD.Options,
         });
         return this;
     }
 
-    head(path: string, handler: Handler): this {
+    all(path: string, handler: Handler): this {
         this.routes.push({
             handler,
             pattern: new URLPattern({ pathname: path }),
-            method: HTTP_METHOD.HEAD,
-        });
-        return this;
-    }
-
-    connect(path: string, handler: Handler): this {
-        this.routes.push({
-            handler,
-            pattern: new URLPattern({ pathname: path }),
-            method: HTTP_METHOD.CONNECT,
-        });
-        return this;
-    }
-
-    trace(path: string, handler: Handler): this {
-        this.routes.push({
-            handler,
-            pattern: new URLPattern({ pathname: path }),
-            method: HTTP_METHOD.TRACE,
+            method: Object.values(METHOD),
         });
         return this;
     }

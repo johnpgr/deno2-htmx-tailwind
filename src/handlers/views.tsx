@@ -1,12 +1,13 @@
 import { escape } from "@std/html";
-import { Layout } from "../layout.ts";
-import { html, HTMLResponse } from "../utils.ts";
+import { Layout } from "../components/layout.tsx";
 import { STATUS_CODE, STATUS_TEXT } from "@std/http/status";
+import { HTMLResponse, PartialHTMLResponse } from "../utils/http.ts";
+import { Delayed } from "../components/delayed.tsx";
 
 export class ViewsHandler {
-    index(req: Request): Response {
+    index(_: Request): Response {
         return new HTMLResponse(
-            Layout(html`
+            <Layout>
                 <main>
                     <h1>Test Deno 2.0 w/ HTMX</h1>
                     <form hx-get="/hello" hx-target="#greet">
@@ -22,8 +23,10 @@ export class ViewsHandler {
                         </button>
                     </form>
                     <div id="greet"></div>
+                    <Delayed delay={1000} />
+                    <p>Test</p>
                 </main>
-            `),
+            </Layout>
         );
     }
 
@@ -31,15 +34,20 @@ export class ViewsHandler {
         const url = new URL(req.url);
         const name = url.searchParams.get("name");
 
-        return new HTMLResponse(
-            html`<p>Hello, ${name ? escape(name) : "unknown"}</p>`,
+        return new PartialHTMLResponse(
+            <p>Hello, {name ? escape(name) : "unknown"}</p>,
         );
     }
 
-    notFound(req: Request): Response {
-        return new HTMLResponse(Layout(html`<p>Not Found</p>`), {
-            status: STATUS_CODE.NotFound,
-            statusText: STATUS_TEXT[STATUS_CODE.NotFound],
-        });
+    notFound(_: Request): Response {
+        return new HTMLResponse(
+            <Layout>
+                <p>Not Found</p>
+            </Layout>,
+            {
+                status: STATUS_CODE.NotFound,
+                statusText: STATUS_TEXT[STATUS_CODE.NotFound],
+            },
+        );
     }
 }

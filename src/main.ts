@@ -1,7 +1,5 @@
-import {
-    route,
-} from "@std/http";
-import { ViewsHandler } from "./handlers/views.ts";
+import { route } from "@std/http";
+import { ViewsHandler } from "./handlers/views.tsx";
 import { Router } from "./router.ts";
 import { staticHandler } from "./handlers/static.ts";
 

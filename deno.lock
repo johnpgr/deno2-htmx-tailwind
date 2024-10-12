@@ -1,10 +1,13 @@
 {
   "version": "4",
   "specifiers": {
+    "jsr:@http/jsx-stream@0.3": "0.3.0",
     "jsr:@std/assert@1": "1.0.6",
+    "jsr:@std/async@^1.0.0-rc.3": "1.0.6",
     "jsr:@std/cli@^1.0.6": "1.0.6",
     "jsr:@std/encoding@^1.0.5": "1.0.5",
     "jsr:@std/fmt@^1.0.2": "1.0.2",
+    "jsr:@std/html@^1.0.0-rc.2": "1.0.3",
     "jsr:@std/html@^1.0.3": "1.0.3",
     "jsr:@std/http@^1.0.8": "1.0.8",
     "jsr:@std/internal@^1.0.4": "1.0.4",
@@ -14,11 +17,21 @@
     "jsr:@std/streams@^1.0.7": "1.0.7"
   },
   "jsr": {
+    "@http/jsx-stream@0.3.0": {
+      "integrity": "2521d6bd20896c6c2f77e3530ca21fe4a7b7ac454d81c51958ecd7f01b6abdc0",
+      "dependencies": [
+        "jsr:@std/async",
+        "jsr:@std/html@^1.0.0-rc.2"
+      ]
+    },
     "@std/assert@1.0.6": {
       "integrity": "1904c05806a25d94fe791d6d883b685c9e2dcd60e4f9fc30f4fc5cf010c72207",
       "dependencies": [
         "jsr:@std/internal"
       ]
+    },
+    "@std/async@1.0.6": {
+      "integrity": "6d262156dd35c4a72ee1a2f8679be40264f370cfb92e2e13d4eca2ae05e16f34"
     },
     "@std/cli@1.0.6": {
       "integrity": "d22d8b38c66c666d7ad1f2a66c5b122da1704f985d3c47f01129f05abb6c5d3d"
@@ -62,6 +75,7 @@
   },
   "workspace": {
     "dependencies": [
+      "jsr:@http/jsx-stream@0.3",
       "jsr:@std/assert@1",
       "jsr:@std/html@^1.0.3",
       "jsr:@std/http@^1.0.8",
