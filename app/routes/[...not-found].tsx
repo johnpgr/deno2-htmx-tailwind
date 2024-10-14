@@ -1,5 +1,5 @@
 import { Page } from "components/layouts/page.layout.tsx"
-import { render } from "internal/http.ts"
+import { render } from "lib/render.ts"
 import { STATUS_CODE, STATUS_TEXT } from "@std/http"
 
 export default function (req: Request) {

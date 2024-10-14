@@ -35,6 +35,7 @@ async function UserInfo({ sessionToken }: { sessionToken?: string }) {
             {user ? (
                 <div class="flex gap-2 items-center">
                     <p>Hello, {user.name}</p>
+                    <a href="/signin"></a>
                     <button
                         class="btn btn-sm btn-neutral"
                         hx-post="/api/auth/signout"

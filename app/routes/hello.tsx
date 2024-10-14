@@ -1,4 +1,4 @@
-import { renderPartial } from "internal/http.ts"
+import { renderPartial } from "lib/render.ts"
 
 export default function (req: Request) {
     const url = new URL(req.url)

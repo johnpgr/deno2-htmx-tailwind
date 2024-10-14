@@ -1,0 +1,4 @@
+- [ ] Hot Module Reloading
+- [ ] Route caching
+- [ ] Proper authentication
+- [ ] Context

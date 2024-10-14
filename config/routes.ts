@@ -25,6 +25,12 @@ export default cascade(
     ),
   ),
   byPattern(
+    "/api/auth/signout",
+    lazy(async () =>
+      byMethod(await import("../app/routes/api/auth/signout.ts"))
+    ),
+  ),
+  byPattern(
     "/api/auth/signin",
     lazy(async () =>
       byMethod(await import("../app/routes/api/auth/signin.ts"))

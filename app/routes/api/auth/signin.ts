@@ -6,7 +6,7 @@ import { ulid } from "@std/ulid/ulid";
 import { Session } from "database/schema.ts"
 import { DEFAULT_REFRESHTOKEN_DURATION, DEFAULT_SESSION_DURATION, REFRESH_COOKIE_NAME, SESSION_COOKIE_NAME } from "config/consts.ts"
 import { setCookie, type Cookie } from "@std/http/cookie"
-import { redirect } from "internal/http.ts"
+import { redirect } from "lib/redirect.ts";
 
 export async function POST(req: Request) {
     const formData = await req.formData();

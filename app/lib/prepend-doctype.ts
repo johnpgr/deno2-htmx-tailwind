@@ -1,42 +1,5 @@
-import { renderBody } from "@http/jsx-stream/serialize"
-import type { Node, RenderOptions } from "@http/jsx-stream"
-
 const DOCTYPE = "<!DOCTYPE html>\n"
 const ENCODED_DOCTYPE = new TextEncoder().encode(DOCTYPE)
-const DEFAULT_DEFERRED_TIMEOUT = 10
-
-export const render = (
-    Component: Node,
-    init?: ResponseInit,
-    options: RenderOptions = { deferredTimeout: DEFAULT_DEFERRED_TIMEOUT },
-) => html(prependDocType(renderBody(Component, options)), init)
-
-export const renderPartial = (
-    Component: Node,
-    init?: ResponseInit,
-    options: RenderOptions = { deferredTimeout: DEFAULT_DEFERRED_TIMEOUT },
-) => html(renderBody(Component, options), init)
-
-export function redirect(url: string, init?: ResponseInit) {
-    const headers = new Headers(init?.headers)
-    headers.set("HX-Location", url)
-
-    return new Response(undefined, {
-        ...init,
-        status: init?.status ?? 302,
-        headers,
-    })
-}
-
-export function html(body: BodyInit, init?: ResponseInit): Response {
-    const headers = new Headers(init?.headers)
-    headers.set("Content-Type", "text/html")
-    return new Response(body, {
-        status: init?.status ?? 200,
-        statusText: init?.statusText ?? "OK",
-        headers,
-    })
-}
 
 /**
  * Original source: https://github.com/jollytoad/deno_http_fns/blob/main/packages/response/prepend_doctype.ts
