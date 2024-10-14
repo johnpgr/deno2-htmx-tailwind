@@ -1,18 +1,50 @@
 {
     "tasks": {
-        "dev": "deno run --watch main.ts"
+        "dev": "deno run --env=.env --watch -A app/main.ts",
+        "tailwind": "tailwindcss -i ./app/styles/global.css -o ./app/routes/_static/global.css --watch",
+        "gen-routes": "deno run -A ./internal/generate-routes.ts",
+        "cache-deps": "deno cache --node-modules-dir npm:drizzle-kit && deno cache --node-modules-dir npm:daisyui",
+        "db:gen": "deno run -A --node-modules-dir npm:drizzle-kit generate",
+        "db:migrate": "deno run -A --node-modules-dir npm:drizzle-kit migrate",
+        "db:pull": "deno run -A --node-modules-dir npm:drizzle-kit introspect",
+        "db:push": "deno run -A --node-modules-dir npm:drizzle-kit push",
+        "db:studio": "deno run -A --node-modules-dir npm:drizzle-kit studio"
     },
     "imports": {
+        "internal/": "./internal/",
+        "database/": "./database/",
+        "components/": "./app/components/",
+        "config/": "./config/",
+        "@felix/argon2": "jsr:@felix/argon2@^1.0.7",
+        "@http/discovery": "jsr:@http/discovery@^0.23.0",
+        "@http/generate": "jsr:@http/generate@^0.23.1",
+        "@http/interceptor": "jsr:@http/interceptor@^0.23.0",
         "@http/jsx-stream": "jsr:@http/jsx-stream@^0.3.0",
-        "@std/assert": "jsr:@std/assert@1",
-        "@std/html": "jsr:@std/html@^1.0.3",
+        "@http/route": "jsr:@http/route@^0.23.0",
         "@std/http": "jsr:@std/http@^1.0.8",
-        "@std/media-types": "jsr:@std/media-types@^1.0.3"
+        "@std/path": "jsr:@std/path@^1.0.6",
+        "@std/ulid": "jsr:@std/ulid@^1.0.0",
+        "daisyui": "npm:daisyui@^4.12.13",
+        "drizzle-kit": "npm:drizzle-kit@^0.25.0",
+        "drizzle-orm": "npm:drizzle-orm@^0.34.1",
+        "postgres": "npm:postgres@^3.4.4",
+        "tailwindcss": "npm:tailwindcss@^3.4.13"
     },
     "compilerOptions": {
         "jsx": "react-jsx",
         "jsxImportSource": "@http/jsx-stream",
         "noUncheckedIndexedAccess": true,
-        "verbatimModuleSyntax": true
+        "verbatimModuleSyntax": true,
+        "strictPropertyInitialization": false
+    },
+    "fmt": {
+        "options": {
+            "useTabs": false,
+            "lineWidth": 120,
+            "indentWidth": 4,
+            "singleQuote": false,
+            "semiColons": false,
+            "proseWrap": "always"
+        }
     }
 }

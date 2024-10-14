@@ -6,7 +6,8 @@ Serves HTML templates inside the typescript code
 
 Pulls [HTMX](https://htmx.org/) with script tag from CDN
 
-Compiles the Tailwind classes using the official [Tailwind CLI](https://github.com/tailwindlabs/tailwindcss/releases/tag/v3.4.13)
+Compiles the Tailwind classes using the official
+[Tailwind CLI](https://github.com/tailwindlabs/tailwindcss/releases/tag/v3.4.13)
 
 ### Install deno dependencies
 
