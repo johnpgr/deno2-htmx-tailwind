@@ -1,3 +1,4 @@
+// Source: https://github.com/jollytoad/home/blob/main/scripts/route_mapper/static.ts
 import type { DiscoveredPath, DiscoveredRoute, StopRouteMapping } from "@http/discovery/types"
 
 export default function staticRouteMapper({
@@ -10,7 +11,7 @@ export default function staticRouteMapper({
             {
                 pattern: pattern.replace(/_static\/.*/, ":path+"),
                 module: import.meta.resolve(
-                    "../route-handlers/handle-static-dir.ts",
+                    "../route-handlers/static.ts"
                 ),
             },
             {

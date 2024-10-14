@@ -9,6 +9,8 @@ export default function (req: Request) {
                     class="border border-border rounded-lg p-16 max-w-sm flex flex-col gap-4"
                     hx-post="/api/auth/signin"
                     hx-ext="response-targets"
+                    hx-disabled-elt="#submit-btn"
+                    hx-indicator="#loading"
                     hx-target-error="#errors"
                 >
                     <label class="input input-bordered flex items-center gap-2">
@@ -52,7 +54,8 @@ export default function (req: Request) {
                             type="password"
                         />
                     </label>
-                    <button class="btn btn-neutral" type="submit">
+                    <button id="submit-btn" class="btn btn-neutral" type="submit">
+                        <span id="loading" class="loading-indicator">Loading...</span>
                         Sign In
                     </button>
                     <div

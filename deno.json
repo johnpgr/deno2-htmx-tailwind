@@ -1,7 +1,7 @@
 {
     "name": "deno-test",
     "tasks": {
-        "dev": "deno run --env=.env --watch -A app/main.ts",
+        "dev": "deno run gen-routes && deno run --env=.env --watch -A app/main.ts",
         "tailwind": "tailwindcss -i ./app/styles/global.css -o ./app/routes/_static/global.css --watch",
         "gen-routes": "deno run -A ./internal/generate-routes.ts",
         "cache-deps": "deno cache --node-modules-dir npm:drizzle-kit && deno cache --node-modules-dir npm:daisyui",
@@ -12,6 +12,7 @@
         "db:studio": "deno run -A --node-modules-dir npm:drizzle-kit studio"
     },
     "imports": {
+        "@deno/emit": "jsr:@deno/emit@^0.45.0",
         "@felix/argon2": "jsr:@felix/argon2@^1.0.7",
         "@http/discovery": "jsr:@http/discovery@^0.23.0",
         "@http/generate": "jsr:@http/generate@^0.23.1",
@@ -22,13 +23,14 @@
         "@std/path": "jsr:@std/path@^1.0.6",
         "@std/ulid": "jsr:@std/ulid@^1.0.0",
         "components/": "./app/components/",
-        "lib/": "./app/lib/",
         "config/": "./config/",
         "csstype": "npm:csstype@^3.1.3",
         "daisyui": "npm:daisyui@^4.12.13",
         "database/": "./database/",
         "drizzle-kit": "npm:drizzle-kit@^0.25.0",
         "drizzle-orm": "npm:drizzle-orm@^0.34.1",
+        "lib/": "./app/lib/",
+        "lucide": "npm:lucide@^0.452.0",
         "postgres": "npm:postgres@^3.4.4",
         "tailwindcss": "npm:tailwindcss@^3.4.13"
     },

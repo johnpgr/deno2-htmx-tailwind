@@ -1,3 +1,4 @@
+// Source: https://github.com/jollytoad/home/blob/main/app/lib/handle_route_static_dir.ts
 import { byMethod } from "@http/route/by-method"
 import { serveDir } from "@std/http"
 import { fromFileUrl } from "@std/path/from-file-url"

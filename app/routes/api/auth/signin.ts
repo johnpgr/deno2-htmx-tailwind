@@ -36,6 +36,7 @@ export async function POST(req: Request) {
         req.headers.get("cf-connecting") ??
         "unknown";
 
+    //TODO: Add constraint to prevent multiple sessions for the same user, ip and user-agent
     const [session] = await db
         .insert(Session)
         .values({

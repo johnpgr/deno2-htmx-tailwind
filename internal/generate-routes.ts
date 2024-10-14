@@ -3,7 +3,7 @@ import { dprintFormatModule } from "@http/generate/dprint-format-module";
 import { freshPathMapper } from "@http/discovery/fresh-path-mapper";
 import { discoverRoutes } from "@http/discovery/discover-routes";
 
-export async function generateRoutes() {
+async function generateRoutes() {
     await generateRoutesModule({
         pattern: "/",
         fileRootUrl: import.meta.resolve("../app/routes"),
@@ -18,15 +18,13 @@ export async function generateRoutes() {
     });
 }
 
-
-if (import.meta.main) {
+async function generateRouteTypes() {
     type DiscoveredRoute = { href: string; methods: string[] };
 
     const routes = await discoverRoutes({
         pathMapper: freshPathMapper,
         fileRootUrl: import.meta.resolve("../app/routes"),
         pattern: "/",
-        verbose: true,
     });
 
     const routesForMethod = (routes: DiscoveredRoute[], method: string) => {
@@ -88,4 +86,10 @@ declare namespace JSX {
 
     const path = import.meta.resolve("../internal/types/generated-routes.d.ts")
     await Deno.writeTextFile(new URL(path), template(discoredRoutes));
+}
+
+
+if (import.meta.main) {
+    await generateRoutes();
+    await generateRouteTypes();
 }

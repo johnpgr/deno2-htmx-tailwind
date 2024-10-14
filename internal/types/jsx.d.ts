@@ -1,8 +1,4 @@
-// This file is a result from many sources, including: RFCs, typescript dom lib, w3schools, and others.
-// Possibly there are many tags/attributes missing, but it is a good start.
-// Missing something? Please submit a issue report or a PR:
-// https://github.com/kitajs/html
-
+// Source: https://github.com/ethanniser/the-beth-stack/blob/main/packages/beth-stack/src/jsx/jsx.d.ts
 declare namespace JSX {
     type Element = Promise<string>;
 

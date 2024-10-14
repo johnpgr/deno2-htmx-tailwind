@@ -1,7 +1,4 @@
-// This file is a result from https://github.com/Desdaemon/typed-htmx and https://htmx.org
-// Missing something? Please submit a issue report or a PR:
-// https://github.com/kitajs/html
-
+// Source: https://github.com/ethanniser/the-beth-stack/blob/main/packages/beth-stack/src/jsx/htmx.d.ts
 declare namespace JSX {
     interface HtmlTag extends Htmx.Attributes {}
 }
@@ -460,9 +457,9 @@ declare namespace Htmx {
         /**
          * The element or elements to disable during requests.
          * Accepts CSS selectors.
-         * @see https://htmx.org/extensions/disable-element/
+         * @see https://htmx.org/attributes/hx-disabled-elt/
          */
-        ["hx-disable-element"]?: "self" | AnyStr;
+        ["hx-disabled-elt"]?: HxTarget | AnyStr;
 
         /**
          * The strategy for merging new head content.
