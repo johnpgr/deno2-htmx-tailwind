@@ -39,7 +39,7 @@ export default cascade(
   byPattern(
     "/:path+",
     lazy(async () =>
-      (await import("../internal/route-handlers/handle-static-dir.ts")).default
+      (await import("../internal/route-handlers/static.ts")).default
     ),
   ),
   byPattern(
