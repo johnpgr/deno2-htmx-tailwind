@@ -4,13 +4,8 @@ This is a simple app built using
 - [Deno 2.0](https://deno.com/blog/v2.0)
 - [Deno JSX Streams](https://github.com/jollytoad/deno_jsx_stream)
 - [Deno HTTP Fns](https://github.com/jollytoad/deno_http_fns)
-
-Serves HTML templates inside the typescript code
-
-Pulls [HTMX](https://htmx.org/) with script tag from CDN
-
-Compiles the Tailwind classes using the official
-[Tailwind CLI](https://github.com/tailwindlabs/tailwindcss/releases/tag/v3.4.13)
+- [HTMX](https://htmx.org/)
+- [Tailwind](https://tailwindcss.com/)
 
 ### Install deno dependencies
 
@@ -18,8 +13,19 @@ Compiles the Tailwind classes using the official
 deno install
 ```
 
+### Run the `cache-deps` script (for node_modules dependent packages)
+
+```bash
+deno run cache-deps
+```
+
 ### Run the app
 
 ```bash
-make
+deno run dev
+```
+
+### Run the Tailwind CLI
+```bash
+deno run tailwind
 ```
