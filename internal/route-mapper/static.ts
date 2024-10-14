@@ -5,13 +5,13 @@ export default function staticRouteMapper({
     parentPath,
     pattern,
 }: DiscoveredPath): (DiscoveredRoute | StopRouteMapping)[] {
-    // Treat any route under a `_static` dir as static content
-    return /[/\\]_static/.test(parentPath)
+    // Treat any route under a `static` dir as static content
+    return /[/\\]static/.test(parentPath)
         ? [
             {
-                pattern: pattern.replace(/_static\/.*/, ":path+"),
+                pattern: pattern.replace(/static\/.*/, ":path+"),
                 module: import.meta.resolve(
-                    "../route-handlers/static.ts"
+                    "../route-handlers/static.ts",
                 ),
             },
             {
@@ -27,11 +27,11 @@ export function staticAssetMapper({
     module,
     ext,
 }: DiscoveredPath): (DiscoveredRoute | StopRouteMapping)[] {
-    // Treat any route under a `_static` dir as static content
-    return /[/\\]_static/.test(parentPath)
+    // Treat any route under a `static` dir as static content
+    return /[/\\]static/.test(parentPath)
         ? [
             {
-                pattern: pattern.replace(/_static\//, "") + ext,
+                pattern: pattern.replace(/static\//, "") + ext,
                 module,
             },
             {

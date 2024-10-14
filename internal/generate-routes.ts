@@ -1,7 +1,7 @@
-import { generateRoutesModule } from "@http/generate/generate-routes-module";
-import { dprintFormatModule } from "@http/generate/dprint-format-module";
-import { freshPathMapper } from "@http/discovery/fresh-path-mapper";
-import { discoverRoutes } from "@http/discovery/discover-routes";
+import { generateRoutesModule } from "@http/generate/generate-routes-module"
+import { dprintFormatModule } from "@http/generate/dprint-format-module"
+import { freshPathMapper } from "@http/discovery/fresh-path-mapper"
+import { discoverRoutes } from "@http/discovery/discover-routes"
 
 async function generateRoutes() {
     await generateRoutesModule({
@@ -12,42 +12,42 @@ async function generateRoutes() {
         routeMapper: [
             "@http/discovery/ts-route-mapper",
             import.meta.resolve("./route-mapper/static.ts"),
+            import.meta.resolve("./route-mapper/browser.ts"),
         ],
         formatModule: dprintFormatModule(),
         verbose: true,
-    });
+    })
 }
 
 async function generateRouteTypes() {
-    type DiscoveredRoute = { href: string; methods: string[] };
+    type DiscoveredRoute = { href: string; methods: string[] }
 
     const routes = await discoverRoutes({
         pathMapper: freshPathMapper,
         fileRootUrl: import.meta.resolve("../app/routes"),
         pattern: "/",
-    });
+    })
 
     const routesForMethod = (routes: DiscoveredRoute[], method: string) => {
         const parsed = routes
             .filter(
                 (route) =>
-                    route.methods.includes(method) 
-                    ||
-                    route.methods.includes("ALL") 
-                    &&
-                    !route.href.endsWith("*") // ignore catch-all routes
+                    route.methods.includes(method) ||
+                    route.methods.includes("ALL") &&
+                        !route.href.endsWith("*"), // ignore catch-all routes
             )
             .map((route) => `"${route.href}"`)
-            .join(" | ");
+            .join(" | ")
 
-        if(parsed.trim() === "") {
-            return "string";
+        if (parsed.trim() === "") {
+            return "string"
         }
 
-        return parsed;
+        return parsed
     }
 
-    const template = (routes: DiscoveredRoute[]) => `
+    const template = (routes: DiscoveredRoute[]) =>
+        `
 type PostRoutes = ${routesForMethod(routes, "POST")}
 type GetRoutes = ${routesForMethod(routes, "GET")}
 type PutRoutes = ${routesForMethod(routes, "PUT")}
@@ -67,29 +67,26 @@ declare namespace JSX {
         href?: GetRoutes | (string & {});
     }
 }
-`.trim();
+`.trim()
 
-    const discoredRoutes: DiscoveredRoute[] = [];
+    const discoredRoutes: DiscoveredRoute[] = []
 
     for (const route of routes) {
         //@ts-ignore: dynamic import
-        const routeModule = await import(route.module);
-        const href = (route.pattern as URLPattern).pathname;
-        const methods: string[] = Object.keys(routeModule).map((method) =>
-            method === "default" ? "ALL" : method,
-        );
+        const routeModule = await import(route.module)
+        const href = (route.pattern as URLPattern).pathname
+        const methods: string[] = Object.keys(routeModule).map((method) => method === "default" ? "ALL" : method)
         if (methods.length < 1) {
-            continue;
+            continue
         }
-        discoredRoutes.push({ href, methods });
+        discoredRoutes.push({ href, methods })
     }
 
     const path = import.meta.resolve("../internal/types/generated-routes.d.ts")
-    await Deno.writeTextFile(new URL(path), template(discoredRoutes));
+    await Deno.writeTextFile(new URL(path), template(discoredRoutes))
 }
 
-
 if (import.meta.main) {
-    await generateRoutes();
-    await generateRouteTypes();
+    await generateRoutes()
+    await generateRouteTypes()
 }

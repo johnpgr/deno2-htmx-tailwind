@@ -1,10 +1,10 @@
-import type { Children } from "@http/jsx-stream/types";
-import { HeaderBar } from "components/header.tsx";
+import type { Children } from "@http/jsx-stream/types"
+import { HeaderBar } from "components/header.tsx"
 
 export function Page(props: {
-    req: Request;
-    title: string;
-    children: Children;
+    req: Request
+    title: string
+    children: Children
 }) {
     return (
         <html lang="en">
@@ -24,5 +24,5 @@ export function Page(props: {
                 {props.children}
             </body>
         </html>
-    );
+    )
 }

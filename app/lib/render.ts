@@ -16,7 +16,6 @@ export const renderPartial = (
     options: RenderOptions = { deferredTimeout: DEFAULT_DEFERRED_TIMEOUT },
 ) => html(renderBody(Component, options), init)
 
-
 function html(body: BodyInit, init?: ResponseInit): Response {
     const headers = new Headers(init?.headers)
     headers.set("Content-Type", "text/html")

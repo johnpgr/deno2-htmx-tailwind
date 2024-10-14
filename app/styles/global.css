@@ -6,12 +6,12 @@
     @apply input-bordered;
 }
 
-.loading-indicator{
-    display:none;
+.loading-indicator {
+    display: none;
 }
-.htmx-request .loading-indicator{
-    display:inline;
+.htmx-request .loading-indicator {
+    display: inline;
 }
-.htmx-request.loading-indicator{
-    display:inline;
+.htmx-request.loading-indicator {
+    display: inline;
 }

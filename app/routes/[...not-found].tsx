@@ -4,9 +4,10 @@ import { STATUS_CODE, STATUS_TEXT } from "@std/http"
 
 export default function (req: Request) {
     return render(
-        <Page 
+        <Page
             req={req}
-            title="Content not found">
+            title="Content not found"
+        >
             <main class="p-4">
                 <p>
                     The content you requested was not found.

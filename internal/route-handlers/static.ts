@@ -11,7 +11,7 @@ export default interceptResponse(
             const path = match.pathname.groups.path ?? ""
             const urlRoot = match.pathname.input.slice(1, -path.length)
             const fsRoot = fromFileUrl(
-                import.meta.resolve(`../../app/routes/${urlRoot}_static`),
+                import.meta.resolve(`../../app/routes/${urlRoot}static`),
             )
 
             return serveDir(req, { fsRoot, urlRoot })

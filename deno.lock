@@ -53,6 +53,7 @@
     "npm:drizzle-kit@*": "0.25.0_esbuild@0.19.12",
     "npm:drizzle-kit@0.25": "0.25.0_esbuild@0.19.12",
     "npm:drizzle-orm@~0.34.1": "0.34.1_postgres@3.4.4",
+    "npm:lucide@*": "0.452.0",
     "npm:lucide@0.452": "0.452.0",
     "npm:postgres@^3.4.4": "3.4.4",
     "npm:tailwindcss@3.4.13": "3.4.13_postcss@8.4.47",

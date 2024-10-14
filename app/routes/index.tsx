@@ -1,6 +1,6 @@
-import { Delayed } from "components/delayed.tsx";
-import { Page } from "components/layouts/page.layout.tsx";
-import { render } from "lib/render.ts"; 
+import { Delayed } from "components/delayed.tsx"
+import { Page } from "components/layouts/page.layout.tsx"
+import { render } from "lib/render.ts"
 
 export default function (req: Request) {
     return render(
@@ -24,5 +24,5 @@ export default function (req: Request) {
                 <p>Test</p>
             </main>
         </Page>,
-    );
+    )
 }

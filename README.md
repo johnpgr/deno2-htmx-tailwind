@@ -1,6 +1,7 @@
 ## Deno 2.0 Full-stack app with HTMX
 
-This is a simple app built using 
+This is a simple app built using
+
 - [Deno 2.0](https://deno.com/blog/v2.0)
 - [Deno JSX Streams](https://github.com/jollytoad/deno_jsx_stream)
 - [Deno HTTP Fns](https://github.com/jollytoad/deno_http_fns)
@@ -26,6 +27,7 @@ deno run dev
 ```
 
 ### Run the Tailwind CLI
+
 ```bash
 deno run tailwind
 ```

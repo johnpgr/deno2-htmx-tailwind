@@ -1,5 +1,5 @@
-import { Page } from "components/layouts/page.layout.tsx";
-import { render } from "lib/render.ts";
+import { Page } from "components/layouts/page.layout.tsx"
+import { render } from "lib/render.ts"
 
 export default function (req: Request) {
     return render(
@@ -65,5 +65,5 @@ export default function (req: Request) {
                 </form>
             </main>
         </Page>,
-    );
+    )
 }

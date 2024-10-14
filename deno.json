@@ -2,9 +2,9 @@
     "name": "deno-test",
     "tasks": {
         "dev": "deno run gen-routes && deno run --env=.env --watch -A app/main.ts",
-        "tailwind": "tailwindcss -i ./app/styles/global.css -o ./app/routes/_static/global.css --watch",
+        "tailwind": "tailwindcss -i ./app/styles/global.css -o ./app/routes/static/global.css --watch",
         "gen-routes": "deno run -A ./internal/generate-routes.ts",
-        "cache-deps": "deno cache --node-modules-dir npm:drizzle-kit && deno cache --node-modules-dir npm:daisyui",
+        "cache-deps": "deno cache --node-modules-dir npm:drizzle-kit && deno cache --node-modules-dir npm:daisyui && deno cache --node-modules-dir npm:lucide",
         "db:gen": "deno run -A --node-modules-dir npm:drizzle-kit generate",
         "db:migrate": "deno run -A --node-modules-dir npm:drizzle-kit migrate",
         "db:pull": "deno run -A --node-modules-dir npm:drizzle-kit introspect",
