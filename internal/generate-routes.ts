@@ -12,7 +12,6 @@ async function generateRoutes() {
         routeMapper: [
             "@http/discovery/ts-route-mapper",
             import.meta.resolve("./route-mapper/static.ts"),
-            import.meta.resolve("./route-mapper/browser.ts"),
         ],
         formatModule: dprintFormatModule(),
         verbose: true,

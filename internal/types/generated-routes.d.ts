@@ -6,14 +6,14 @@ type PatchRoutes = "/signup" | "/signin" | "/hello" | "/"
 
 declare namespace JSX {
     interface HtmlTag extends Htmx.Attributes {
-        ["hx-get"]?: GetRoutes
-        ["hx-post"]?: PostRoutes
-        ["hx-put"]?: PutRoutes
-        ["hx-delete"]?: DeleteRoutes
-        ["hx-patch"]?: PatchRoutes
+        ["hx-get"]?: GetRoutes;
+        ["hx-post"]?: PostRoutes;
+        ["hx-put"]?: PutRoutes;
+        ["hx-delete"]?: DeleteRoutes;
+        ["hx-patch"]?: PatchRoutes;
     }
-
+    
     interface HtmlAnchorTag extends HtmlTag {
-        href?: GetRoutes | (string & {})
+        href?: GetRoutes | (string & {});
     }
 }

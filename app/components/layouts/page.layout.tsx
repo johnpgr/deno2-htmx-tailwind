@@ -1,10 +1,10 @@
-import type { Children } from "@http/jsx-stream/types"
-import { HeaderBar } from "components/header.tsx"
+import type { Children } from "@http/jsx-stream/types";
+import { HeaderBar } from "components/header.tsx";
 
 export function Page(props: {
-    req: Request
-    title: string
-    children: Children
+    req: Request;
+    title: string;
+    children: Children;
 }) {
     return (
         <html lang="en">
@@ -15,8 +15,9 @@ export function Page(props: {
                     content="width=device-width, initial-scale=1"
                 />
                 <link rel="stylesheet" href="/global.css" />
-                <script src="https://unpkg.com/htmx.org@2.0.3"></script>
-                <script src="https://unpkg.com/htmx-ext-response-targets@2.0.0/response-targets.js"></script>
+                <script src="https://unpkg.com/htmx.org@2.0.3" />
+                <script src="https://unpkg.com/htmx-ext-response-targets@2.0.0/response-targets.js" />
+                <script defer src="/lucide.js" />
                 <title>{props.title}</title>
             </head>
             <body>
@@ -24,5 +25,5 @@ export function Page(props: {
                 {props.children}
             </body>
         </html>
-    )
+    );
 }
