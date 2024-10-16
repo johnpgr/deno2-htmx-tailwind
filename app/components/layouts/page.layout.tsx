@@ -1,10 +1,10 @@
-import type { Children } from "@http/jsx-stream/types"
-import { HeaderBar } from "components/header.tsx"
+import type { Children } from "@http/jsx-stream/types";
+import { HeaderBar } from "components/header.tsx";
 
 export function Page(props: {
-    req: Request
-    title: string
-    children: Children
+    req: Request;
+    title: string;
+    children: Children;
 }) {
     return (
         <html lang="en">
@@ -18,7 +18,9 @@ export function Page(props: {
                 <script src="https://unpkg.com/htmx.org@2.0.3" />
                 <script src="https://unpkg.com/htmx-ext-response-targets@2.0.0/response-targets.js" />
                 <script defer src="/lucide.js" />
-                <script defer src="/auto-refresh.js" />
+                {Deno.env.get("DENO_ENV") === "development" ? (
+                    <script defer src="/auto-refresh.js" />
+                ) : null}
                 <title>{props.title}</title>
             </head>
             <body>
@@ -26,5 +28,5 @@ export function Page(props: {
                 {props.children}
             </body>
         </html>
-    )
+    );
 }

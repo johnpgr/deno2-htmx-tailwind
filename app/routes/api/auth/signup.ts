@@ -3,7 +3,7 @@ import { db } from "database/client.ts"
 import { User } from "database/schema.ts"
 import { ulid } from "@std/ulid/ulid"
 import { hash } from "@felix/argon2"
-import { hxRedirect } from "internal/responses/redirect.ts"
+import { hxRedirect } from "utils/response.tsx"
 
 export async function POST(req: Request) {
     const formData = await req.formData()

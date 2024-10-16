@@ -3,7 +3,7 @@ import { SESSION_COOKIE_NAME } from "config/consts.ts"
 import { db } from "database/client.ts"
 import { Session } from "database/schema.ts"
 import { eq } from "drizzle-orm/expressions"
-import { hxRedirect } from "internal/responses/redirect.ts"
+import { hxRedirect } from "utils/response.tsx"
 
 export async function POST(req: Request) {
     const cookies = getCookies(req.headers)

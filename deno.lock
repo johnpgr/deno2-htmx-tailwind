@@ -9,6 +9,7 @@
     "jsr:@http/discovery@0.23": "0.23.0",
     "jsr:@http/fs@0.23": "0.23.0",
     "jsr:@http/generate@~0.23.1": "0.23.1",
+    "jsr:@http/interceptor@0.23": "0.23.0",
     "jsr:@http/jsx-stream@0.3": "0.3.0",
     "jsr:@http/response@0.23": "0.23.0",
     "jsr:@http/route@0.23": "0.23.0",
@@ -116,6 +117,13 @@
         "jsr:@dprint/formatter",
         "jsr:@http/discovery",
         "jsr:@std/path@^1.0.6"
+      ]
+    },
+    "@http/interceptor@0.23.0": {
+      "integrity": "6882145ffc99c8865b9e2b536a86efc641841642e1a1583496df83526738bf5d",
+      "dependencies": [
+        "jsr:@http/response",
+        "jsr:@http/route"
       ]
     },
     "@http/jsx-stream@0.3.0": {
@@ -1108,6 +1116,7 @@
       "jsr:@felix/argon2@^1.0.7",
       "jsr:@http/discovery@0.23",
       "jsr:@http/generate@~0.23.1",
+      "jsr:@http/interceptor@0.23",
       "jsr:@http/jsx-stream@0.3",
       "jsr:@http/route@0.23",
       "jsr:@std/http@^1.0.8",

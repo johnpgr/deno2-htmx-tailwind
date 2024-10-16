@@ -1,7 +1,7 @@
 import type {
     RouteProps,
 } from "internal/route-handlers/component/types.ts";
-import { redirect } from "internal/responses/redirect.ts";
+import { redirect } from "../utils/response.tsx"
 
 export default function Hello({ req }: RouteProps) {
     const url = new URL(req.url);

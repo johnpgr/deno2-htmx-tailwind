@@ -11,7 +11,7 @@ import {
     SESSION_COOKIE_NAME,
 } from "config/consts.ts"
 import { type Cookie, setCookie } from "@std/http/cookie"
-import { hxRedirect } from "internal/responses/redirect.ts"
+import { hxRedirect } from "utils/response.tsx"
 
 export async function POST(req: Request) {
     const formData = await req.formData()

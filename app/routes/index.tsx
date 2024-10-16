@@ -9,12 +9,12 @@ export default function IndexPage({req}: RouteProps) {
                 <form hx-get="/hello" hx-target="#greet">
                     <h2>Get greeted:</h2>
                     <input
-                        class="border p-1 rounded"
+                        class="input input-bordered input-sm input-primary"
                         name="name"
                         type="text"
                         placeholder="your name"
                     />
-                    <button class="border p-1 rounded" type="submit">
+                    <button class="btn btn-sm btn-outline btn-primary ml-1" type="submit">
                         submit
                     </button>
                 </form>

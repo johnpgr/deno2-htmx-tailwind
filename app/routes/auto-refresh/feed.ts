@@ -2,6 +2,11 @@ import { byMediaType } from "@http/route/by-media-type";
 
 export const GET = byMediaType({
     "text/event-stream": (_req: Request) => {
+        console.log(Deno.env.get("DENO_ENV"));
+        if(Deno.env.get("DENO_ENV") !== "development") {
+            return new Response("Not Found", { status: 404, statusText: "Not Found" });
+        }
+
         const body = ReadableStream.from(streamEvents()).pipeThrough(
             new TextEncoderStream(),
         );

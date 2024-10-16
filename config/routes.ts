@@ -26,6 +26,15 @@ export default cascade(
     ),
   ),
   byPattern(
+    "/posts/:id",
+    lazy(async () =>
+      handleComponent(
+        (await import("../app/routes/posts/[id].tsx")).default,
+        import.meta.resolve("../app/routes/posts/[id].tsx"),
+      )
+    ),
+  ),
+  byPattern(
     "/hello",
     lazy(async () =>
       handleComponent(
@@ -62,6 +71,15 @@ export default cascade(
     "/:path+",
     lazy(async () =>
       (await import("../internal/route-handlers/static.ts")).default
+    ),
+  ),
+  byPattern(
+    "/:_404*",
+    lazy(async () =>
+      handleComponent(
+        (await import("../app/routes/_404.tsx")).default,
+        import.meta.resolve("../app/routes/_404.tsx"),
+      )
     ),
   ),
   byPattern(

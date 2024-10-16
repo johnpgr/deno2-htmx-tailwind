@@ -1,6 +1,6 @@
-import { withFallback } from "@http/route/with-fallback"
-import routes from "config/routes.ts"
+import routes from "config/routes.ts";
 
 if (import.meta.main) {
-    await Deno.serve(withFallback(routes)).finished
+    //@ts-ignore: This works fine
+    await Deno.serve(routes).finished;
 }
