@@ -11,7 +11,7 @@ import {
     SESSION_COOKIE_NAME,
 } from "config/consts.ts"
 import { type Cookie, setCookie } from "@std/http/cookie"
-import { redirect } from "lib/redirect.ts"
+import { hxRedirect } from "internal/responses/redirect.ts"
 
 export async function POST(req: Request) {
     const formData = await req.formData()
@@ -80,5 +80,5 @@ export async function POST(req: Request) {
     setCookie(headers, sessionTokenCookie)
     setCookie(headers, refreshTokenCookie)
 
-    return redirect("/", { headers })
+    return hxRedirect("/", { headers })
 }

@@ -4,19 +4,45 @@ import { byMethod } from "@http/route/by-method";
 import { byPattern } from "@http/route/by-pattern";
 import { cascade } from "@http/route/cascade";
 import { lazy } from "@http/route/lazy";
+import { handleComponent } from "internal/route-handlers/component/handle-component.tsx";
 
 export default cascade(
   byPattern(
     "/signup",
-    lazy(async () => (await import("../app/routes/signup.tsx")).default),
+    lazy(async () =>
+      handleComponent(
+        (await import("../app/routes/signup.tsx")).default,
+        import.meta.resolve("../app/routes/signup.tsx"),
+      )
+    ),
   ),
   byPattern(
     "/signin",
-    lazy(async () => (await import("../app/routes/signin.tsx")).default),
+    lazy(async () =>
+      handleComponent(
+        (await import("../app/routes/signin.tsx")).default,
+        import.meta.resolve("../app/routes/signin.tsx"),
+      )
+    ),
   ),
   byPattern(
     "/hello",
-    lazy(async () => (await import("../app/routes/hello.tsx")).default),
+    lazy(async () =>
+      handleComponent(
+        (await import("../app/routes/hello.tsx")).default,
+        import.meta.resolve("../app/routes/hello.tsx"),
+      )
+    ),
+  ),
+  byPattern(
+    "/auto-refresh/feed",
+    lazy(async () =>
+      byMethod(await import("../app/routes/auto-refresh/feed.ts"))
+    ),
+  ),
+  byPattern(
+    "/api/test",
+    lazy(async () => (await import("../app/routes/api/test.ts")).default),
   ),
   byPattern(
     "/api/auth/signup",
@@ -43,13 +69,12 @@ export default cascade(
     ),
   ),
   byPattern(
-    "/:not-found*",
-    lazy(async () =>
-      (await import("../app/routes/[...not-found].tsx")).default
-    ),
-  ),
-  byPattern(
     "/",
-    lazy(async () => (await import("../app/routes/index.tsx")).default),
+    lazy(async () =>
+      handleComponent(
+        (await import("../app/routes/index.tsx")).default,
+        import.meta.resolve("../app/routes/index.tsx"),
+      )
+    ),
   ),
 );

@@ -1,9 +1,9 @@
 import { defineConfig } from "drizzle-kit"
 
 export default defineConfig({
-    out: "./drizzle",
+    out: "./database",
     dialect: "postgresql",
-    schema: "./src/db/schema.ts",
+    schema: "./database/schema.ts",
     dbCredentials: {
         url: Deno.env.get("DATABASE_URL")!,
     },

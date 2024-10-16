@@ -1,8 +1,8 @@
 import { Page } from "components/layouts/page.layout.tsx";
-import { render } from "lib/render.ts";
+import type { RouteProps } from "internal/route-handlers/component/types.ts";
 
-export default function (req: Request) {
-    return render(
+export default function SigninPage({ req }: RouteProps) {
+    return (
         <Page req={req} title="Sign In">
             <main class="min-h-screen w-full flex justify-center items-center">
                 <form
@@ -53,6 +53,6 @@ export default function (req: Request) {
                     />
                 </form>
             </main>
-        </Page>,
+        </Page>
     );
 }

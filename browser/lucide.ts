@@ -1,10 +1,4 @@
-import {
-    createIcons,
-    Loader2,
-    LockKeyhole,
-    Mail,
-    User,
-} from "../node_modules/lucide/dist/esm/lucide.js";
+import { createIcons, Loader2, LockKeyhole, Mail, User } from "../node_modules/lucide/dist/esm/lucide.js"
 
 createIcons({
     icons: {
@@ -13,4 +7,4 @@ createIcons({
         LockKeyhole,
         Loader2,
     },
-});
+})

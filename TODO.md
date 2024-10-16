@@ -1,4 +1,12 @@
-- [ ] Hot Module Reloading
-- [ ] Route caching
-- [ ] Proper authentication
+- [x] Make default export functions that return a JSX Element on routes automatically return a html get endpoint with that component rendered.
+- [ ] Map 404.tsx route
+- [ ] Live reloading
+- [ ] Middleware
 - [ ] Context
+- [ ] Suspense / fallback for async components
+- [ ] Route caching
+- [ ] Rate limiting
+- [ ] Proper authentication
+- [ ] Markdown rendering
+- [ ] Mailer
+- [ ] See if beth-stack jsx rendering works better for async component rendering.

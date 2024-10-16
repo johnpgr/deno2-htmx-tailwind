@@ -1,9 +1,9 @@
 import { deleteCookie, getCookies } from "@std/http/cookie"
 import { SESSION_COOKIE_NAME } from "config/consts.ts"
-import { redirect } from "lib/redirect.ts"
 import { db } from "database/client.ts"
 import { Session } from "database/schema.ts"
 import { eq } from "drizzle-orm/expressions"
+import { hxRedirect } from "internal/responses/redirect.ts"
 
 export async function POST(req: Request) {
     const cookies = getCookies(req.headers)
@@ -15,7 +15,7 @@ export async function POST(req: Request) {
 
         const responseHeaders = new Headers()
         deleteCookie(responseHeaders, SESSION_COOKIE_NAME, { path: "/" })
-        return redirect("/", {
+        return hxRedirect("/", {
             headers: responseHeaders,
         })
     }

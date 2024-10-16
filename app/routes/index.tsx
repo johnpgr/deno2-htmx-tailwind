@@ -1,9 +1,8 @@
-import { Delayed } from "components/delayed.tsx"
-import { Page } from "components/layouts/page.layout.tsx"
-import { render } from "lib/render.ts"
+import { Page } from "components/layouts/page.layout.tsx";
+import type { RouteProps } from "internal/route-handlers/component/types.ts"
 
-export default function (req: Request) {
-    return render(
+export default function IndexPage({req}: RouteProps) {
+    return (
         <Page req={req} title="Index Page">
             <main>
                 <h1>Test Deno 2.0 w/ HTMX</h1>
@@ -20,9 +19,7 @@ export default function (req: Request) {
                     </button>
                 </form>
                 <div id="greet"></div>
-                <Delayed delay={1000} />
-                <p>Test</p>
             </main>
-        </Page>,
-    )
+        </Page>
+    );
 }

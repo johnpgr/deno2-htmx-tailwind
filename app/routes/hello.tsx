@@ -1,9 +1,12 @@
-import { renderPartial } from "lib/render.ts"
+import type { RouteProps } from "internal/route-handlers/component/types.ts";
+import { redirect } from "internal/responses/redirect.ts"
 
-export default function (req: Request) {
-    const url = new URL(req.url)
-    const name = url.searchParams.get("name")
+export default function Hello({ req }: RouteProps) {
+    const url = new URL(req.url);
+    const name = url.searchParams.get("name");
+    if(!name) return redirect("/");
 
     //{name} is automatically escaped
-    return renderPartial(<p>Hello, {name ?? "unknown"}</p>)
+    return <p>Hello, {name ?? "unknown"}</p>;
 }
+

@@ -17,7 +17,6 @@
         "@felix/argon2": "jsr:@felix/argon2@^1.0.7",
         "@http/discovery": "jsr:@http/discovery@^0.23.0",
         "@http/generate": "jsr:@http/generate@^0.23.1",
-        "@http/interceptor": "jsr:@http/interceptor@^0.23.0",
         "@http/jsx-stream": "jsr:@http/jsx-stream@^0.3.0",
         "@http/route": "jsr:@http/route@^0.23.0",
         "@std/http": "jsr:@std/http@^1.0.8",
@@ -30,7 +29,7 @@
         "database/": "./database/",
         "drizzle-kit": "npm:drizzle-kit@^0.25.0",
         "drizzle-orm": "npm:drizzle-orm@^0.34.1",
-        "lib/": "./app/lib/",
+        "internal/": "./internal/",
         "lucide": "npm:lucide@^0.452.0",
         "postgres": "npm:postgres@^3.4.4",
         "tailwindcss": "npm:tailwindcss@^3.4.13"
@@ -48,7 +47,7 @@
     "fmt": {
         "options": {
             "useTabs": false,
-            "lineWidth": 120,
+            "lineWidth": 80,
             "indentWidth": 4,
             "singleQuote": false,
             "semiColons": false,

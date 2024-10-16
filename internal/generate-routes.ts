@@ -10,8 +10,13 @@ async function generateRoutes() {
         moduleOutUrl: import.meta.resolve("../config/routes.ts"),
         pathMapper: "@http/discovery/fresh-path-mapper",
         routeMapper: [
-            "@http/discovery/ts-route-mapper",
+            import.meta.resolve("./route-mapper/ignore.ts"),
             import.meta.resolve("./route-mapper/static.ts"),
+            "@http/discovery/ts-route-mapper",
+        ],
+        handlerGenerator: [
+            import("@http/generate/methods-handler-generator"),
+            import("internal/handler-generator/default-fn-handler-generator.ts"),
         ],
         formatModule: dprintFormatModule(),
         verbose: true,
@@ -39,7 +44,7 @@ async function generateRouteTypes() {
             .join(" | ")
 
         if (parsed.trim() === "") {
-            return "string"
+            return "never"
         }
 
         return parsed
@@ -71,6 +76,8 @@ declare namespace JSX {
     const discoredRoutes: DiscoveredRoute[] = []
 
     for (const route of routes) {
+        if((route.pattern as URLPattern).pathname.startsWith("/_")) continue
+        
         //@ts-ignore: dynamic import
         const routeModule = await import(route.module)
         const href = (route.pattern as URLPattern).pathname
