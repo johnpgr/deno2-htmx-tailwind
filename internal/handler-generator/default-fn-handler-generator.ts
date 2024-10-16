@@ -33,7 +33,7 @@ export function generate(
             const handleComponent = asFn(
                 staticImport(
                     importNamed(
-                        "internal/route-handlers/component/handle-component.tsx",
+                        "internal/route-handlers/component/handle-component.ts",
                         "handleComponent",
                     ),
                 ),
