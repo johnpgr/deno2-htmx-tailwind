@@ -1,8 +1,8 @@
-type PostRoutes = "/signup" | "/signin" | "/hello" | "/api/test" | "/api/auth/signup" | "/api/auth/signout" | "/api/auth/signin" | "/"
-type GetRoutes = "/signup" | "/signin" | "/hello" | "/auto-refresh/feed" | "/api/test" | "/"
-type PutRoutes = "/signup" | "/signin" | "/hello" | "/api/test" | "/"
-type DeleteRoutes = "/signup" | "/signin" | "/hello" | "/api/test" | "/"
-type PatchRoutes = "/signup" | "/signin" | "/hello" | "/api/test" | "/"
+type PostRoutes = "/api/auth/signup" | "/api/auth/signout" | "/api/auth/signin"
+type GetRoutes = "/signup" | "/signin" | "/hello" | "/auto-refresh/feed" | "/"
+type PutRoutes = never
+type DeleteRoutes = never
+type PatchRoutes = never
 
 declare namespace JSX {
     interface HtmlTag extends Htmx.Attributes {

@@ -81,7 +81,16 @@ declare namespace JSX {
         //@ts-ignore: dynamic import
         const routeModule = await import(route.module)
         const href = (route.pattern as URLPattern).pathname
-        const methods: string[] = Object.keys(routeModule).map((method) => method === "default" ? "ALL" : method)
+        const methods: string[] = Object.keys(routeModule).map((method) => {
+            if(method === "default") {
+                const isJsx = routeModule.default.toString().includes("_jsx");
+                if(isJsx) {
+                    return "GET"
+                }
+                return "ALL"
+            }
+            return method
+        })
         if (methods.length < 1) {
             continue
         }
