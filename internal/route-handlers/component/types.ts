@@ -1,4 +1,6 @@
-export type ComponentType<Props extends JSX.IntrinsicAttributes> = (
+export type ComponentRoute = (props: RouteProps) => JSX.Element | Response;
+
+export type Component<Props extends JSX.IntrinsicAttributes> = (
     props: Props,
 ) => JSX.Element;
 

@@ -4,7 +4,7 @@ export function redirect(url: string, init?: ResponseInit) {
 
     return new Response(undefined, {
         ...init,
-        status: init?.status ?? 301,
+        status: init?.status ?? 302,
         headers,
     })
 }
@@ -15,7 +15,7 @@ export function hxRedirect(url: string, init?: ResponseInit) {
 
     return new Response(undefined, {
         ...init,
-        status: init?.status ?? 301,
+        status: init?.status ?? 302,
         headers,
     })
 }

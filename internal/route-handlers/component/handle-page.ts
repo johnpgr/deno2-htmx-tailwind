@@ -1,13 +1,13 @@
 import { byMethod } from "@http/route/by-method";
 import { render } from "internal/route-handlers/component/render.ts";
-import type { ComponentType, RouteProps } from "./types.ts";
+import type { ComponentRoute } from "./types.ts";
 
 /**
  * Basic GET request handler that renders a HTML full page component,/
  * passing the request and URL pattern match result as properties.
  */
 export function handlePage(
-    Component: ComponentType<RouteProps>,
+    Component: ComponentRoute,
     init?: ResponseInit,
 ) {
     return byMethod({
@@ -16,7 +16,7 @@ export function handlePage(
 }
 
 export function renderPage(
-    Component: ComponentType<RouteProps>,
+    Component: ComponentRoute,
     init?: ResponseInit,
 ) {
     return (req: Request, match: URLPatternResult) => {

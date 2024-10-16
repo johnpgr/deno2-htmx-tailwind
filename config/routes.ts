@@ -4,7 +4,7 @@ import { byMethod } from "@http/route/by-method";
 import { byPattern } from "@http/route/by-pattern";
 import { cascade } from "@http/route/cascade";
 import { lazy } from "@http/route/lazy";
-import { handleComponent } from "internal/route-handlers/component/handle-component.tsx";
+import { handleComponent } from "internal/route-handlers/component/handle-component.ts";
 
 export default cascade(
   byPattern(
@@ -39,10 +39,6 @@ export default cascade(
     lazy(async () =>
       byMethod(await import("../app/routes/auto-refresh/feed.ts"))
     ),
-  ),
-  byPattern(
-    "/api/test",
-    lazy(async () => (await import("../app/routes/api/test.ts")).default),
   ),
   byPattern(
     "/api/auth/signup",
