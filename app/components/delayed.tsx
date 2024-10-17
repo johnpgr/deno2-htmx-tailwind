@@ -1,6 +1,7 @@
 import type { Children } from "@http/jsx-stream/types"
 
-export const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
+export const delay = (ms: number) =>
+    new Promise((resolve) => setTimeout(resolve, ms))
 
 export interface DelayedProps {
     delay: number

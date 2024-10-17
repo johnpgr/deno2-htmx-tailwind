@@ -16,7 +16,9 @@ async function generateRoutes() {
         ],
         handlerGenerator: [
             import("@http/generate/methods-handler-generator"),
-            import("internal/handler-generator/default-fn-handler-generator.ts"),
+            import(
+                "internal/handler-generator/default-fn-handler-generator.ts"
+            ),
         ],
         formatModule: dprintFormatModule(),
         verbose: true,
@@ -37,7 +39,7 @@ async function generateRouteTypes() {
             .filter(
                 (route) =>
                     route.methods.includes(method) ||
-                    route.methods.includes("ALL")
+                    route.methods.includes("ALL"),
             )
             .map((route) => `"${route.href}"`)
             .join(" | ")
@@ -75,16 +77,16 @@ declare namespace JSX {
     const discoredRoutes: DiscoveredRoute[] = []
 
     for (const route of routes) {
-        if((route.pattern as URLPattern).pathname.startsWith("/_")) continue
-        if((route.pattern as URLPattern).pathname.startsWith("/:")) continue
-        
+        if ((route.pattern as URLPattern).pathname.startsWith("/_")) continue
+        if ((route.pattern as URLPattern).pathname.startsWith("/:")) continue
+
         //@ts-ignore: dynamic import
         const routeModule = await import(route.module)
         const href = (route.pattern as URLPattern).pathname
         const methods: string[] = Object.keys(routeModule).map((method) => {
-            if(method === "default") {
-                const isJsx = routeModule.default.toString().includes("_jsx");
-                if(isJsx) {
+            if (method === "default") {
+                const isJsx = routeModule.default.toString().includes("_jsx")
+                if (isJsx) {
                     return "GET"
                 }
                 return "ALL"

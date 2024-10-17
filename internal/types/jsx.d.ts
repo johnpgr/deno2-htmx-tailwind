@@ -1,4 +1,3 @@
-
 // Source: https://github.com/ethanniser/the-beth-stack/blob/main/packages/beth-stack/src/jsx/jsx.d.ts
 declare namespace JSX {
     type Element = Promise<string>

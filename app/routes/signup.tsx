@@ -1,5 +1,5 @@
-import { Page } from "components/layouts/page.layout.tsx";
-import type { RouteProps } from "internal/route-handlers/component/types.ts";
+import { Page } from "components/layouts/page.layout.tsx"
+import type { RouteProps } from "internal/route-handlers/component/types.ts"
 
 export default function SignupPage({ req }: RouteProps) {
     return (
@@ -14,24 +14,11 @@ export default function SignupPage({ req }: RouteProps) {
                     hx-target-error="#errors"
                 >
                     <label class="input input-bordered flex items-center gap-2">
-                        <i data-lucide="mail" class="w-4 h-4" />
-                        <input
-                            class="grow"
-                            placeholder="Email"
-                            id="email"
-                            name="email"
-                            required={true}
-                            type="email"
-                        />
-                    </label>
-
-                    <label class="input input-bordered flex items-center gap-2">
                         <i data-lucide="user" class="w-4 h-4" />
                         <input
                             class="grow"
                             placeholder="Username"
-                            id="username"
-                            name="username"
+                            name="userAlias"
                             required={true}
                             type="text"
                         />
@@ -42,7 +29,6 @@ export default function SignupPage({ req }: RouteProps) {
                         <input
                             class="grow"
                             placeholder="Password"
-                            id="password"
                             name="password"
                             required={true}
                             type="password"
@@ -66,5 +52,5 @@ export default function SignupPage({ req }: RouteProps) {
                 </form>
             </main>
         </Page>
-    );
+    )
 }

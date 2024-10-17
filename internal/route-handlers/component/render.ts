@@ -1,7 +1,4 @@
-import {
-  renderBody,
-  type RenderOptions,
-} from "@http/jsx-stream";
+import { renderBody, type RenderOptions } from "@http/jsx-stream"
 import { prependDocType } from "internal/route-handlers/component/prepend-doctype.ts"
 
 const DEFAULT_DEFERRED_TIMEOUT = 0

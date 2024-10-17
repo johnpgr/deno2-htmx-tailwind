@@ -1,5 +1,9 @@
 // Source: https://github.com/jollytoad/home/blob/main/scripts/route_mapper/static.ts
-import type { DiscoveredPath, DiscoveredRoute, StopRouteMapping } from "@http/discovery/types"
+import type {
+    DiscoveredPath,
+    DiscoveredRoute,
+    StopRouteMapping,
+} from "@http/discovery/types"
 
 export default function staticRouteMapper({
     parentPath,

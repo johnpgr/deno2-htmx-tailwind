@@ -13,10 +13,12 @@ export default function ErrorPage(err: unknown) {
             </head>
             <body>
                 <main class="flex flex-col h-[90vh] justify-center items-center">
-                    <h1 class="text-red-500 font-medium">Internal Server Error</h1>
+                    <h1 class="text-red-500 font-medium">
+                        Internal Server Error
+                    </h1>
                     {err instanceof Error ? <h2>{err.message}</h2> : null}
                 </main>
             </body>
         </html>
-    );
+    )
 }

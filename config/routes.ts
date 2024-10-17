@@ -26,15 +26,6 @@ export default cascade(
     ),
   ),
   byPattern(
-    "/posts/:id",
-    lazy(async () =>
-      handleComponent(
-        (await import("../app/routes/posts/[id].tsx")).default,
-        import.meta.resolve("../app/routes/posts/[id].tsx"),
-      )
-    ),
-  ),
-  byPattern(
     "/hello",
     lazy(async () =>
       handleComponent(
@@ -48,6 +39,10 @@ export default cascade(
     lazy(async () =>
       byMethod(await import("../app/routes/auto-refresh/feed.ts"))
     ),
+  ),
+  byPattern(
+    "/api/comments",
+    lazy(async () => byMethod(await import("../app/routes/api/comments.ts"))),
   ),
   byPattern(
     "/api/auth/signup",

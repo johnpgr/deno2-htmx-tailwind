@@ -1,4 +1,5 @@
-- [x] Make default export functions that return a JSX Element on routes automatically return a html get endpoint with that component rendered.
+- [x] Make default export functions that return a JSX Element on routes
+      automatically return a html get endpoint with that component rendered.
 - [x] Map 404.tsx route
 - [x] Live reloading
 - [ ] Middleware
@@ -9,4 +10,5 @@
 - [ ] Proper authentication
 - [ ] Markdown rendering
 - [ ] Mailer
-- [ ] See if beth-stack jsx rendering works better for async component rendering.
+- [ ] See if beth-stack jsx rendering works better for async component
+      rendering.

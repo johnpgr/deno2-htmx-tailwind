@@ -1,7 +1,7 @@
-import { renderBody } from "@http/jsx-stream/serialize";
+import { renderBody } from "@http/jsx-stream/serialize"
 
 export function errorHandler(): (err: unknown) => Promise<Response> {
-    const defaultError = new Response("Internal Server Error", { status: 500 });
+    const defaultError = new Response("Internal Server Error", { status: 500 })
 
     return async (err) => {
         try {
@@ -12,9 +12,9 @@ export function errorHandler(): (err: unknown) => Promise<Response> {
                 {
                     status: 500,
                 },
-            );
+            )
         } catch (_error) {
-            return defaultError;
+            return defaultError
         }
-    };
+    }
 }

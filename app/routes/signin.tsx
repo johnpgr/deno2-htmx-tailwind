@@ -1,5 +1,5 @@
-import { Page } from "components/layouts/page.layout.tsx";
-import type { RouteProps } from "internal/route-handlers/component/types.ts";
+import { Page } from "components/layouts/page.layout.tsx"
+import type { RouteProps } from "internal/route-handlers/component/types.ts"
 
 export default function SigninPage({ req }: RouteProps) {
     return (
@@ -17,9 +17,8 @@ export default function SigninPage({ req }: RouteProps) {
                         <i data-lucide="user" class="w-4 h-4" />
                         <input
                             class="grow"
-                            placeholder="Username or Email"
-                            id="username-or-email"
-                            name="username-or-email"
+                            placeholder="Username"
+                            name="userAlias"
                             required={true}
                             type="text"
                         />
@@ -54,5 +53,5 @@ export default function SigninPage({ req }: RouteProps) {
                 </form>
             </main>
         </Page>
-    );
+    )
 }

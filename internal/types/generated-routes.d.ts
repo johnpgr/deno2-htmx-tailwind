@@ -1,5 +1,5 @@
-type PostRoutes = "/api/auth/signup" | "/api/auth/signout" | "/api/auth/signin"
-type GetRoutes = "/signup" | "/signin" | "/posts/:id" | "/hello" | "/auto-refresh/feed" | "/"
+type PostRoutes = "/api/comments" | "/api/auth/signup" | "/api/auth/signout" | "/api/auth/signin"
+type GetRoutes = "/signup" | "/signin" | "/hello" | "/auto-refresh/feed" | "/"
 type PutRoutes = never
 type DeleteRoutes = never
 type PatchRoutes = never

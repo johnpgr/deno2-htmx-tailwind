@@ -2,7 +2,7 @@
  * Improved fresh path mapper. Adds support for _404.tsx
  */
 
-import type { DiscoveredPath } from "@http/discovery/types";
+import type { DiscoveredPath } from "@http/discovery/types"
 
 /**
  * A Fresh-like path mapping function.
@@ -30,51 +30,51 @@ export function freshPathMapper(entry: DiscoveredPath): DiscoveredPath {
     return {
         ...entry,
         pattern: freshPath(entry.pattern),
-    };
+    }
 }
 
 function freshPath(path: string): string {
-    let segments = path.split("/");
-    const last = segments.pop();
-    segments = segments.flatMap(freshPart);
+    let segments = path.split("/")
+    const last = segments.pop()
+    segments = segments.flatMap(freshPart)
     if (last && last !== "index") {
-        segments.push(...freshName(last));
+        segments.push(...freshName(last))
     }
-    return segments.join("") || "/";
+    return segments.join("") || "/"
 }
 
-const DOUBLE_BRACKET_RE = /\[\[(.+?)\]\]/g;
-const SINGLE_BRACKET_RE = /\[(.+?)\]/g;
+const DOUBLE_BRACKET_RE = /\[\[(.+?)\]\]/g
+const SINGLE_BRACKET_RE = /\[(.+?)\]/g
 
 function freshPart(part: string): string[] {
-    if(part === "_404") {
-        return ["/:_404*"];
-    } 
+    if (part === "_404") {
+        return ["/:_404*"]
+    }
     if (part.startsWith("(") && part.endsWith(")")) {
-        return [];
+        return []
     }
     if (part.startsWith("[...") && part.endsWith("]")) {
-        return [`/:${part.slice(4, part.length - 1)}*`];
+        return [`/:${part.slice(4, part.length - 1)}*`]
     }
     if (DOUBLE_BRACKET_RE.test(part)) {
-        part = part.replaceAll(DOUBLE_BRACKET_RE, ":$1?");
+        part = part.replaceAll(DOUBLE_BRACKET_RE, ":$1?")
     }
     if (SINGLE_BRACKET_RE.test(part)) {
-        part = part.replaceAll(SINGLE_BRACKET_RE, ":$1");
+        part = part.replaceAll(SINGLE_BRACKET_RE, ":$1")
     }
-    return part ? [`/${part}`] : [];
+    return part ? [`/${part}`] : []
 }
 
 function freshName(part: string): string[] {
     if (part.endsWith(".ext")) {
         // a required extension
-        return [...freshPart(part.slice(0, -4)), "{.:ext}"];
+        return [...freshPart(part.slice(0, -4)), "{.:ext}"]
     } else if (part.endsWith("[.ext]")) {
         // an optional extension
-        return [...freshPart(part.slice(0, -6)), "{.:ext}?"];
+        return [...freshPart(part.slice(0, -6)), "{.:ext}?"]
     } else {
-        return freshPart(part);
+        return freshPart(part)
     }
 }
 
-export default freshPathMapper;
+export default freshPathMapper

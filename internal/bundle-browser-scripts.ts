@@ -7,7 +7,10 @@ if (import.meta.main) {
     for (const entry of await readdir(entrypoint)) {
         if (entry.endsWith(".ts")) {
             const { code } = await bundle(new URL(entry, entrypoint))
-            await Deno.writeTextFile(new URL(entry.replace(".ts", ".js"), outDir), code)
+            await Deno.writeTextFile(
+                new URL(entry.replace(".ts", ".js"), outDir),
+                code,
+            )
         }
     }
 }
