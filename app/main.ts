@@ -1,6 +1,9 @@
 import routes from "config/routes.ts";
+import { errorHandler } from "config/error.ts";
 
 if (import.meta.main) {
-    //@ts-ignore: This works fine
-    await Deno.serve(routes).finished;
+    await Deno.serve(
+        { onError: errorHandler() },
+        routes as (req: Request) => Promise<Response>,
+    ).finished;
 }

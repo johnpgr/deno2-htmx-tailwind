@@ -37,8 +37,7 @@ async function generateRouteTypes() {
             .filter(
                 (route) =>
                     route.methods.includes(method) ||
-                    route.methods.includes("ALL") &&
-                        !route.href.endsWith("*"), // ignore catch-all routes
+                    route.methods.includes("ALL")
             )
             .map((route) => `"${route.href}"`)
             .join(" | ")
@@ -77,6 +76,7 @@ declare namespace JSX {
 
     for (const route of routes) {
         if((route.pattern as URLPattern).pathname.startsWith("/_")) continue
+        if((route.pattern as URLPattern).pathname.startsWith("/:")) continue
         
         //@ts-ignore: dynamic import
         const routeModule = await import(route.module)

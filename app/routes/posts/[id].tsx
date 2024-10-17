@@ -1,6 +1,6 @@
 import type { RouteProps } from "internal/route-handlers/component/types.ts";
 import posts from "../../posts.json" with { type: "json" };
-import { params } from "utils/params.ts";
+import { params } from "utils/url.ts";
 import { notFound } from "utils/response.tsx";
 import { Page } from "components/layouts/page.layout.tsx";
 

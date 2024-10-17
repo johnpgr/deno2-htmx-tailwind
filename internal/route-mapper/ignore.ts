@@ -1,7 +1,7 @@
 import type { DiscoveredPath, StopRouteMapping } from "@http/discovery/types";
 
 function isErrorCodeRoute(name: string): boolean {
-    return name === "_404" || name === "_500";
+    return name === "_404";
 }
 
 export default function ignoredRouteMapper({

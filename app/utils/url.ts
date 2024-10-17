@@ -2,4 +2,6 @@ export function params(match: URLPatternResult): Record<string, string | undefin
     return match.pathname.groups;
 }
 
-export function 
+export function searchParams(req: Request): URLSearchParams {
+    return new URL(req.url).searchParams
+}

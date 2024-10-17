@@ -1,5 +1,5 @@
 - [x] Make default export functions that return a JSX Element on routes automatically return a html get endpoint with that component rendered.
-- [ ] Map 404.tsx route
+- [x] Map 404.tsx route
 - [x] Live reloading
 - [ ] Middleware
 - [ ] Context
