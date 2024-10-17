@@ -1,24 +1,17 @@
-import { getCookies } from "@std/http/cookie";
-import { SESSION_COOKIE_NAME } from "config/consts.ts";
 import { User } from "entities/User.ts";
+import { deduped } from "utils/deduped.ts"
 
-export function HeaderBar(props: { req: Request }) {
-    const cookies = getCookies(props.req.headers);
-    const sessionToken = cookies[SESSION_COOKIE_NAME];
-
+export function HeaderBar({req}: { req: Request }) {
     return (
         <header class="flex items-center justify-end min-h-12 px-4 w-full bg-primary-content">
             <nav></nav>
-            <UserInfo sessionToken={sessionToken} />
+            <UserInfo req={req} />
         </header>
     );
 }
 
-async function UserInfo({ sessionToken }: { sessionToken?: string }) {
-    let user: User | null = null;
-    if (sessionToken) {
-        user = await User.findOneBy({ sessions: { token: sessionToken } });
-    }
+async function UserInfo(props: { req: Request }) {
+    const user = await deduped((req) => User.fromRequest(req))(props.req);
 
     return (
         <div>

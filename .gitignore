@@ -1,5 +1,6 @@
 .idea/
 .vscode/
+database/db.sqlite
 node_modules/
 build/
 tmp/
