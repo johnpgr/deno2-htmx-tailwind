@@ -1,14 +1,14 @@
 import { generateRoutesModule } from "@http/generate/generate-routes-module"
 import { dprintFormatModule } from "@http/generate/dprint-format-module"
 import { discoverRoutes } from "@http/discovery/discover-routes"
-import freshPathMapper from "internal/path-mapper.ts"
+import { freshPathMapper } from "@http/discovery/fresh-path-mapper"
 
 async function generateRoutes() {
     await generateRoutesModule({
         pattern: "/",
         fileRootUrl: import.meta.resolve("../app/routes"),
         moduleOutUrl: import.meta.resolve("../config/routes.ts"),
-        pathMapper: import.meta.resolve("./path-mapper.ts"),
+        pathMapper: "@http/discovery/fresh-path-mapper",
         routeMapper: [
             import.meta.resolve("./route-mapper/ignore.ts"),
             import.meta.resolve("./route-mapper/static.ts"),
@@ -20,7 +20,7 @@ async function generateRoutes() {
                 "internal/handler-generator/default-fn-handler-generator.ts"
             ),
         ],
-        formatModule: dprintFormatModule(),
+        formatModule: dprintFormatModule({ indentWidth: 4 }),
         verbose: true,
     })
 }

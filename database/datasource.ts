@@ -6,5 +6,4 @@ export const AppDataSource = new DataSource({
     database: "./database/db.sqlite",
     entities: entities,
     synchronize: true,
-    logging: ["query"],
 })

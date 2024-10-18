@@ -5,7 +5,6 @@ export default function IndexPage({ req }: RouteProps) {
     return (
         <Page req={req} title="Index Page">
             <main>
-
             </main>
         </Page>
     )

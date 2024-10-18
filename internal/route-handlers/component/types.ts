@@ -1,7 +1,12 @@
 import type { Awaitable } from "@http/route/types"
 
-export type ComponentRoute = (props: RouteProps) => Awaitable<JSX.Element | Response>
-export type APIRoute = (req: Request, pattern: URLPatternResult) => Awaitable<Response>
+export type ComponentRoute = (
+    props: RouteProps,
+) => Awaitable<JSX.Element | Response>
+export type APIRoute = (
+    req: Request,
+    pattern: URLPatternResult,
+) => Awaitable<Response>
 
 export type Component<Props extends JSX.IntrinsicAttributes> = (
     props: Props,

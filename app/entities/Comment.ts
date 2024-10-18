@@ -1,27 +1,27 @@
 import {
-    ManyToOne,
     BaseEntity,
     Column,
     Entity,
-    type Relation,
+    ManyToOne,
     PrimaryGeneratedColumn,
-} from "typeorm";
-import { User } from "entities/User.ts";
+    type Relation,
+} from "typeorm"
+import { User } from "entities/User.ts"
 
 @Entity()
 export class Comment extends BaseEntity {
     @PrimaryGeneratedColumn()
-    id: number;
+    id: number
 
     @ManyToOne(() => User, (user) => user.comments, {
         eager: true,
         cascade: true,
     })
-    user: Relation<User>;
+    user: Relation<User>
 
     @Column()
-    body: string;
+    body: string
 
     @Column()
-    createdAt: Date;
+    createdAt: Date
 }
